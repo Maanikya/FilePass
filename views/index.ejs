@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/styles.css">
+        <title>File Share</title>
+    </head>
+    <body>
+        <header>
+            <h1 style="text-align: center;"><a href="/" class="title" style="text-decoration: none;">File Pass</a></h1>
+        </header>
+        <form
+            action="/upload"
+            method="post"
+            enctype="multipart/form-data">
+            <% if(locals.fileLink != null) { %>
+                <div class="linkLabel">
+                Your File is Uploaded:
+                <a href="<%= locals.fileLink %>">Download Link</a>
+            <% } %>
+            <div
+                style="
+                    display: grid;
+                    gap: 0.5rem;
+                    grid-template-columns: auto 1fr;
+                    max-width: 500px;
+                    margin: 2rem auto;
+                "
+            >
+                <label for="file" class="fileLabel">File: </label>
+                <input type="file" id="file" name="file" class="fileInput" required />
+
+                <label for="password" class="passwordLabel">Password: </label>
+                <input type="password" id="password" name="password" class="passwordInput" placeholder="Not Mandatory" />
+
+                <!-- <button type="submit" style="grid-column: span 2">Share</button> -->
+            </div>  
+            <button class="btn" type="submit">
+                <strong>SHARE</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+            </button>        
+        </form>
+    </body>
+</html>
